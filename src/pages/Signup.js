@@ -6,8 +6,8 @@ import { blue } from "@mui/material/colors";
 function Signup() {
     const paperStyle = {
         padding: 20,
-        height: "80vh",
-        width: 500,
+        height: "70vh",
+        width: 450,
         margin: "20px auto",
     };
     return (
