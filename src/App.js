@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+
+import Form from './Components/Form';
+import ToDoList from './Components/ToDoList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello Student <br/>
-          Let's organize your life. 
-        </p>
-        <a
-          className="App-link"
-          href="https://uta.edu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          The University of Texas at Arlington
-        </a>
-      </header>
+    <div style={{backgroundColor:"#A4FAD2", padding: "15px"}}>
+      <div className="todoApp">
+  
+      <ToDoList/>
     </div>
+    </div>
+    
   );
 }
 
