@@ -14,13 +14,14 @@ function Login() {
     };
     return (
         <div>
+            <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh"}}>
             <Grid>
                 <Paper elevation={10} style={paperStyle}>
                     <Grid align='center'>
                         <Avatar sx={{ bgcolor: blue[500] }}>
                             <LoginIcon />
                         </Avatar>
-                        <h2>Sign In</h2>
+                        <h2>Log In</h2>
                     </Grid>
                     <TextField
                         margin="normal"
@@ -42,10 +43,10 @@ function Login() {
                         Login
                     </Button>
 
-
                 </Paper>
             </Grid>
         </div>
+    </div>
     );
 }
 

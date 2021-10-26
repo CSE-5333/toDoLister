@@ -6,14 +6,14 @@
   max-width: 800px;
   min-width: none;
   min-height: 900px;
-  background: grey;
+  background:white;
   text-align: center;
   margin: 10px auto;
   border-radius: 10px;
   padding: 10px;
   padding-bottom: 32px;
 }
-h1 {
+h2 {
   margin: 32px 0;
   color:black;
   font-size: 24px;
@@ -28,11 +28,11 @@ h1 {
   justify-content: space-between;
   align-items: center;
   margin: 4px auto;
-  color: #fff;
+  color: #000;
   background: linear-gradient(
     90deg,
-    rgb(105, 69, 43) 0%,
-    rgb(140, 173, 48) 100%
+    rgb(135, 206, 235)0%,
+    rgb(159, 226, 191) 100%
   );
 
   padding: 16px;
@@ -43,24 +43,24 @@ h1 {
 .todoClass:nth-child(4n + 1) {
   background: linear-gradient(
     90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
+    #98c1d9 0%,
+    #e0fbfc 100%
   );
 }
 
 .todoClass:nth-child(4n + 2) {
   background: linear-gradient(
     90deg,
-    rgba(255, 12, 241, 1) 0%,
-    rgba(250, 0, 135, 1) 100%
+    #7DF9FF 0%,
+    #ADD8E6 100%
   );
 }
 
 .todoClass:nth-child(4n + 3) {
   background: linear-gradient(
     90deg,
-    rgba(20, 159, 255, 1) 0%,
-    rgba(17, 122, 255, 1) 100%
+    #6495ED 0%,
+    #89CFF0 100%
   );
 }
 
@@ -73,12 +73,12 @@ h1 {
 
 .delete{
   margin-right: 10px;
-  color:pink;
+  color:#1434A4;
   
 }
 
 .edit{
   
-  color:green ;
+  color:#5D3FD3;
 
 }

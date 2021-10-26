@@ -49,7 +49,7 @@ const ToDoList = () =>{
 
     return(
         <>
-            <h1>Let's organize your life.</h1>
+            <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{margin: "0 auto"}} />
             <Form onsubmit={addToDo}/>
             <ToDoContainer todoLists={todoLists} todoComplete= {todoComplete} toDoRemove = {toDoRemove} toDoUpdate={toDoUpdate}/>
