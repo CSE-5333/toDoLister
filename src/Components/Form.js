@@ -8,10 +8,10 @@ import { ToDoListHolder, InputContainer,Button, Input } from './FormElements';
 const Form= (props)=>{
     const [textInput, setInput] = useState(props.edit? props.edit.value:'');
     const inputRef = useRef(null);
-    let button = 'ADD';
+    let button = 'Add';
     let value = false;
     if (props.edit){
-        button = 'UPDATE'
+        button = 'Update'
         value = true
     }
 

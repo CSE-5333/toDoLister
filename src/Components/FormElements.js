@@ -21,30 +21,25 @@ grid-gap: 5px;
 
 `
 export const Button = styled.button`
-color: blue;
-
+color: white;
+border-radius: 4px 4px 4px 4px;
+border: 1px solid #606060;
 cursor:pointer;
-background: ${props =>props.value ? "yellow": "green"};
+background: ${props =>props.value ? "#4169E1": "#4169E1"};
 
 font-size: 20px;
 
 `
 
 export const Input = styled.input`
-//   font-size: 18px;
-//   padding: 15px;
-//   margin: 10px;
-//   background: papayawhip;
-//   border: none;
-//   border-radius: 3px;
 padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
-  border: 2px solid #5d0cff;
+  border-radius: 4px 4px 4px 4px;
+  border: 1px solid #606060;
   outline: none;
   width: 370px;
-  background: ${props =>props.arg ? "#87984c": "papayawhip"};
+  background: ${props =>props.arg ? "#B6D0E2": "#CCCCFF"};
   color: black;
   font-size: 18px;
   }
-
-`
+ `
+ 
