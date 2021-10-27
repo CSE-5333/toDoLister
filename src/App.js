@@ -10,14 +10,15 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Home} exact/>
+        <Route path="/" component={Landing} exact/>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/Landing" component={Landing} />
+        <Route path="/home" component={Home} />
 
       </Switch>
 

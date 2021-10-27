@@ -1,4 +1,3 @@
-import history from "../history";
 import { Grid, Paper, Button } from '@mui/material';
 import logo from '../Assets/todo-icon.png';
 import icon from '../Assets/get-started_icon.jpg';
@@ -21,7 +20,7 @@ function Landing() {
     }
     return (
         <div>
-            <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh", weight: "100vh"}}>
+            <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh"}}>
                 <Grid>
                     <Paper elevation={10} style={paperStyle}>
                         <Grid align='center'>
@@ -29,7 +28,7 @@ function Landing() {
                             <h1>Welcome to our to-do lister app!</h1>
                             <img src={icon} alt="logo" height="250px" width="500px" style={{ margin: "20px auto" }} />
                             <Grid align = 'center'>
-                                <Button variant="contained" onClick={() => history.push('/Signup')}>Get Started</Button>
+                                <Button variant="contained" >Get Started</Button>
                             </Grid>
                             <p style={styletext}>Manage your life better with us.!!</p>
                         </Grid>

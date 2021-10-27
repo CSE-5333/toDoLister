@@ -3,7 +3,6 @@ import Form from "./Form";
 import ToDoContainer from "./ToDoContainer";
 import logo from '../Assets/todo-icon.png';
 import { Grid, Button } from "@mui/material";
-import history from "../history";
 
 const ToDoList = () => {
     const [todoLists, setTodoLists] = useState([])
@@ -52,7 +51,7 @@ const ToDoList = () => {
     return (
         <>
             <Grid container justifyContent="flex-end">
-                <Button variant = "contained" onClick = {()=>history.push('/Landing')}>Logout</Button>
+                <Button variant = "contained">Logout</Button>
             </Grid>
             <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{ margin: "0 auto" }} />
