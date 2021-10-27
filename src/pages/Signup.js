@@ -1,21 +1,42 @@
-import React from 'react'
+import React from "react";
 import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { blue } from "@mui/material/colors";
+import { useState } from "react";
 
 function Signup() {
+    //variables for storing form fields
+    const [Fname, setFname] = useState("");
+    const [Lname, setLname] = useState("");
+    const [Email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
+    const [CPassword, setCPassword] = useState("");
+    const handleSubmit = () => {
+        console.log(Fname)
+        console.log(Lname)
+        console.log(Email)
+        console.log(Password)
+        console.log(CPassword)
+     };
+
     const paperStyle = {
         padding: 20,
-        height: "70vh",
+        height: "72vh",
         width: 450,
         margin: "20px auto",
     };
     return (
         <div>
-            <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh" }}>
+            <div
+                style={{
+                    backgroundColor: "#9CC3D5FF",
+                    padding: "15px",
+                    height: "100vh",
+                }}
+            >
                 <Grid>
                     <Paper elevation={10} style={paperStyle}>
-                        <Grid align='center'>
+                        <Grid align="center">
                             <Avatar sx={{ bgcolor: blue[500] }}>
                                 <LoginIcon />
                             </Avatar>
@@ -25,50 +46,65 @@ function Signup() {
                             container
                             direction="row"
                             justifyContent="space-between"
-                            alignItems="stretch">
+                            alignItems="stretch"
+                        >
                             <TextField
                                 margin="normal"
-                                label='First Name'
-                                placeholder='Enter your First Name'
-
+                                label="First Name"
+                                placeholder="Enter your First Name"
+                                onChange={(e) => {
+                                    setFname(e.target.value);
+                                }}
                             />
                             <TextField
                                 margin="normal"
-                                label='Last Name'
-                                placeholder='Enter your Last Name'
-
+                                label="Last Name"
+                                placeholder="Enter your Last Name"
+                                onChange={(e) => {
+                                    setLname(e.target.value);
+                                }}
                             />
-                        </ Grid>
-
+                        </Grid>
                         <TextField
                             margin="normal"
-                            label='Email'
-                            placeholder='Enter your email'
+                            label="Email"
+                            placeholder="Enter your email"
                             fullWidth
-                        />
-
-                        <TextField
-                            label='Password'
-                            placeholder='Enter your password'
-                            type='password'
-                            fullWidth
-                            margin="normal"
-
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
                         />
                         <TextField
-                            label='Confirm Password'
-                            placeholder='Re-enter your password'
-                            type='password'
+                            label="Password"
+                            placeholder="Enter your password"
+                            type="password"
                             fullWidth
                             margin="normal"
-
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
                         />
-
-                        <Button sx={{ mt: 3 }} type='submit' color='primary' variant='contained' fullWidth>
+                        <TextField
+                            label="Confirm Password"
+                            placeholder="Re-enter your password"
+                            type="password"
+                            fullWidth
+                            margin="normal"
+                            onChange={(e) => {
+                                setCPassword(e.target.value);
+                            }}
+                        />
+                        <Button
+                            sx={{ mt: 3 }}
+                            type="submit"
+                            onClick={handleSubmit}
+                            color="primary"
+                            variant="contained"
+                            fullWidth
+                        >
                             Sign up
                         </Button>
-
-
+                        Already have an account? Log in <a href="/login">here</a>
                     </Paper>
                 </Grid>
             </div>
@@ -76,4 +112,4 @@ function Signup() {
     );
 }
 
-export default Signup
+export default Signup;
