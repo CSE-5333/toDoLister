@@ -52,7 +52,7 @@ const ToDoList = () => {
     return (
         <>
             <Grid container justifyContent="flex-end">
-                <Button variant = "contained" onClick = {()=>history.push('/Info')}>Logout</Button>
+                <Button variant = "contained" onClick = {()=>history.push('/Landing')}>Logout</Button>
             </Grid>
             <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{ margin: "0 auto" }} />
