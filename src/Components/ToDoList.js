@@ -3,9 +3,14 @@ import Form from "./Form";
 import ToDoContainer from "./ToDoContainer";
 import logo from '../Assets/todo-icon.png';
 import { Grid, Button } from "@mui/material";
+import { useHistory } from 'react-router';
 
 const ToDoList = () => {
     const [todoLists, setTodoLists] = useState([])
+    let history = useHistory();
+    const goTo = () =>{
+        history.push('/')
+    }
 
     const addToDo = (toDo) => {
         // removes unwanted space at the front and back of the sentence
@@ -51,7 +56,7 @@ const ToDoList = () => {
     return (
         <>
             <Grid container justifyContent="flex-end">
-                <Button variant = "contained">Logout</Button>
+                <Button variant = "contained" onClick={goTo}>Logout</Button>
             </Grid>
             <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{ margin: "0 auto" }} />

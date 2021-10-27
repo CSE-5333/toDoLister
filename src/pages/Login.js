@@ -1,11 +1,15 @@
 import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { blue } from "@mui/material/colors";
-
+import { useHistory } from 'react-router';
 import React from "react";
 
 
 function Login() {
+    let history = useHistory();
+    const goTo = () =>{
+        history.push('/home')
+    }
     const paperStyle = {
         padding: 20,
         height: "60vh",
@@ -39,7 +43,7 @@ function Login() {
 
                     />
 
-                    <Button sx={{mt:3}} type='submit' color='primary' variant='contained' fullWidth>
+                    <Button sx={{mt:3}} type='submit' onClick={goTo} color='primary' variant='contained' fullWidth>
                         Login
                     </Button>
 
