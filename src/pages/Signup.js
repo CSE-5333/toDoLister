@@ -3,21 +3,40 @@ import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { blue } from "@mui/material/colors";
 import { useState } from "react";
+import {useAuth} from "../contexts/AuthContext"
+
+
 
 function Signup() {
+    
     //variables for storing form fields
     const [Fname, setFname] = useState("");
     const [Lname, setLname] = useState("");
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [CPassword, setCPassword] = useState("");
-    const handleSubmit = () => {
+    const [error, seterror] = useState("")
+    const [isLoading, setisLoading] = useState(false)
+    const {register} = useAuth();
+    
+    async function handleSubmit(e){
+        e.preventDefault()
         console.log(Fname)
         console.log(Lname)
         console.log(Email)
         console.log(Password)
         console.log(CPassword)
-     };
+        
+        setisLoading(true);
+        register(Email, Password)
+        .then((response)=>{
+            console.log(response)
+
+        })
+        .catch((error)=>{console.log(error)})
+            
+        
+     }
 
     const paperStyle = {
         padding: 20,
@@ -96,7 +115,7 @@ function Signup() {
                         />
                         <Button
                             sx={{ mt: 3 }}
-                            type="submit"
+                            disabled={isLoading}
                             onClick={handleSubmit}
                             color="primary"
                             variant="contained"
@@ -105,6 +124,7 @@ function Signup() {
                             Sign up
                         </Button>
                         Already have an account? Log in <a href="/login">here</a>
+                        
                     </Paper>
                 </Grid>
             </div>
