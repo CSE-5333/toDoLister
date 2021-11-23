@@ -3,13 +3,57 @@ import LoginIcon from "@mui/icons-material/Login";
 import { blue } from "@mui/material/colors";
 import { useHistory } from 'react-router';
 import React from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useState, useEffect } from "react";
+
 
 
 function Login() {
+    const {login} = useAuth();
+    const [Password, setPassword] = useState("")
+    const [Email, setEmail] = useState("")
+    const [emailError, setemailError] = useState(false)
+    const [isLoading, setisLoading] = useState(false)
     let history = useHistory();
-    const goTo = () =>{
-        history.push('/home')
+    
+    async function handleSubmit(e){
+        //history.push('/home')
+        setisLoading(true);
+        console.log(Email)
+        console.log(Password)
+        login(Email, Password)
+        .then((response)=>{
+            console.log(response)
+            history.push('/home')
+        })
+        .catch((error)=>{
+            console.log(error)
+            setisLoading(false)
+            
+        });
     }
+
+    useEffect(()=>{
+        var regexEmail = /@+.+(com|co|org|fr|net|de|ru|it|es|nl|ca|be|ch|edu)/;
+         var resultEmail = regexEmail.test(Email)
+         if(!resultEmail && Email.length>0)
+         {
+            setemailError("Invalid Email");
+            
+
+         }
+         else{
+             setemailError("");
+             setisLoading(false);
+
+         }
+         if(!Password.length || !Email.length)
+         {
+             setisLoading(true)
+         }
+        
+    }, [Email, emailError, Password])
+
     const paperStyle = {
         padding: 20,
         height: "60vh",
@@ -18,6 +62,7 @@ function Login() {
     };
     return (
         <div>
+            
             <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh"}}>
             <Grid>
                 <Paper elevation={10} style={paperStyle}>
@@ -28,10 +73,14 @@ function Login() {
                         <h2>Log In</h2>
                     </Grid>
                     <TextField
+                        helperText={emailError}
                         margin="normal"
                         label='Email'
                         placeholder='Enter your email'
                         fullWidth
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}
                     />
 
                     <TextField
@@ -40,10 +89,13 @@ function Login() {
                         type='password'
                         fullWidth
                         margin="normal"
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                        }}
 
                     />
 
-                    <Button sx={{mt:3}} type='submit' onClick={goTo} color='primary' variant='contained' fullWidth>
+                    <Button sx={{mt:3}} type='submit' onClick={handleSubmit} color='primary' variant='contained' fullWidth disabled={isLoading}>
                         Login
                     </Button>
 

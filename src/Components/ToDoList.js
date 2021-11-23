@@ -4,12 +4,23 @@ import ToDoContainer from "./ToDoContainer";
 import logo from '../Assets/todo-icon.png';
 import { Grid, Button } from "@mui/material";
 import { useHistory } from 'react-router';
+import { useAuth } from "../contexts/AuthContext";
 
 const ToDoList = () => {
+    const {logout} = useAuth();
     const [todoLists, setTodoLists] = useState([])
     let history = useHistory();
-    const goTo = () =>{
-        history.push('/')
+    const logoutfunction = () =>{
+        logout()
+        .then((response)=>{
+            console.log(response)
+            history.push('/')
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+        
     }
 
     const addToDo = (toDo) => {
@@ -56,7 +67,7 @@ const ToDoList = () => {
     return (
         <>
             <Grid container justifyContent="flex-end">
-                <Button variant = "contained" onClick={goTo}>Logout</Button>
+                <Button variant = "contained" onClick={logoutfunction}>Logout</Button>
             </Grid>
             <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{ margin: "0 auto" }} />
