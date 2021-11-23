@@ -4,7 +4,7 @@ import { blue } from "@mui/material/colors";
 import { useHistory } from 'react-router';
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +14,7 @@ function Login() {
     const {login} = useAuth();
     const [Password, setPassword] = useState("")
     const [Email, setEmail] = useState("")
+    const [emailError, setemailError] = useState(false)
     const [isLoading, setisLoading] = useState(false)
     let history = useHistory();
     const notify = () =>{
@@ -39,6 +40,28 @@ function Login() {
             
         });
     }
+
+    useEffect(()=>{
+        var regexEmail = /@+.+(com|co|org|fr|net|de|ru|it|es|nl|ca|be|ch|edu)/;
+         var resultEmail = regexEmail.test(Email)
+         if(!resultEmail && Email.length>0)
+         {
+            setemailError("Invalid Email");
+            
+
+         }
+         else{
+             setemailError("");
+             setisLoading(false);
+
+         }
+         if(!Password.length || !Email.length)
+         {
+             setisLoading(true)
+         }
+        
+    }, [Email, emailError, Password])
+
     const paperStyle = {
         padding: 20,
         height: "60vh",
@@ -58,6 +81,7 @@ function Login() {
                         <h2>Log In</h2>
                     </Grid>
                     <TextField
+                        helperText={emailError}
                         margin="normal"
                         label='Email'
                         placeholder='Enter your email'
