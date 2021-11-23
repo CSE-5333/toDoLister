@@ -1,12 +1,10 @@
-import { Avatar, Button, Grid, Paper, TextField, Zoom } from "@mui/material";
+import { Avatar, Button, Grid, Paper, TextField } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { blue } from "@mui/material/colors";
 import { useHistory } from 'react-router';
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -17,13 +15,7 @@ function Login() {
     const [emailError, setemailError] = useState(false)
     const [isLoading, setisLoading] = useState(false)
     let history = useHistory();
-    const notify = () =>{
-        toast("Wow so easy!",{
-            className:"custom-toast",
-            draggable: true,
-            position: toast.POSITION.BOTTOM_CENTER
-        });
-    }
+    
     async function handleSubmit(e){
         //history.push('/home')
         setisLoading(true);
@@ -70,7 +62,7 @@ function Login() {
     };
     return (
         <div>
-            <ToastContainer draggable={false} transition={Zoom} autoClose={8000}/>
+            
             <div style={{ backgroundColor: "#9CC3D5FF", padding: "15px", height: "100vh"}}>
             <Grid>
                 <Paper elevation={10} style={paperStyle}>
