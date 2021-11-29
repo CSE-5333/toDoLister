@@ -2,6 +2,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
+import {useAuth} from './contexts/AuthContext';
+import { Redirect } from 'react-router';
 
 
 import {
@@ -14,7 +16,7 @@ import AuthContextProvider from './contexts/AuthContext';
 
 
 
-function App() {
+export default function App() {
   return (
    <AuthContextProvider>
     <Router>
@@ -24,7 +26,11 @@ function App() {
           <Route path="/" component={Landing} exact />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/home" component={Home} />
+          <ProtectedRoute 
+          exact
+          path="/home"
+          component={Home} 
+          />
 
         </Switch>
       
@@ -35,4 +41,15 @@ function App() {
   );
 }
 
-export default App;
+function ProtectedRoute(props){
+  const {currentUser} = useAuth()
+  const {path} = props
+  return currentUser?(
+    <Route {...props}/>
+
+  ) : (<Redirect to ={{
+    pathname:'/login',
+    state:{from:path},
+  }}/>)
+  
+}
