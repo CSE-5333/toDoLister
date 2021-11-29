@@ -24,8 +24,8 @@ export default function App() {
 
         <Switch>
           <Route path="/" component={Landing} exact />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Redirectpath exact path="/login" component={Login} />
+          <Redirectpath exact path="/signup" component={Signup} />
           <ProtectedRoute 
           exact
           path="/home"
@@ -52,4 +52,18 @@ function ProtectedRoute(props){
     state:{from:path},
   }}/>)
   
+}
+function Redirectpath(props){
+  const {currentUser} = useAuth()
+  const {path} = props
+  return currentUser?
+  (<Redirect to ={{
+    pathname:'/home',
+    state:{from:path},
+  }}/>)
+  
+  :(
+    <Route {...props}/>
+
+  )  
 }
