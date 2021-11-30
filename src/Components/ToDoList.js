@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Form from "./Form";
 import ToDoContainer from "./ToDoContainer";
 import logo from '../Assets/todo-icon.png';
 import { Grid, Button } from "@mui/material";
 import { useHistory } from 'react-router';
 import { useAuth } from "../contexts/AuthContext";
+import axios from 'axios';
+
+
+
 
 const ToDoList = () => {
-    const {logout} = useAuth();
+    const {logout, currentUser} = useAuth();
+   
+    
     const [todoLists, setTodoLists] = useState([])
     let history = useHistory();
     const logoutfunction = () =>{
@@ -39,6 +45,25 @@ const ToDoList = () => {
         const newtoDoArray = [...todoLists].filter(toDo => toDo.id !== id)
 
         setTodoLists(newtoDoArray)
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/item/deleteitem',
+            data:{
+                listid : id
+            },
+            headers:{
+                authorization:"Bearer "+ currentUser.accessToken
+            },
+            
+            })
+            .then((response) => {
+
+                console.log(response)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
 
     }
 
@@ -48,6 +73,9 @@ const ToDoList = () => {
             return;
         }
         setTodoLists(prev => prev.map(item => (item.id === id ? newValue : item)))
+       
+
+
 
     }
     const todoComplete = (id) => {
@@ -61,11 +89,34 @@ const ToDoList = () => {
         setTodoLists(toDoListsUpdated);
 
     }
+    useEffect(() => {
+        
+        
+        axios({
+            method: 'get',
+            url: 'http://localhost:5000/item/allitems',
+            headers:{
+                authorization:"Bearer "+ currentUser.accessToken
+            }
+            })
+            .then((response) => {
+
+                console.log(response)
+                
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        
+        
+    }, [])
 
 
 
     return (
+        
         <>
+            
             <Grid container justifyContent="flex-end">
                 <Button variant = "contained" onClick={logoutfunction}>Logout</Button>
             </Grid>
