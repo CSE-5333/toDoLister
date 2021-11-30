@@ -8,7 +8,8 @@ import { useAuth } from "../contexts/AuthContext";
 
 const ToDoList = () => {
     const {logout} = useAuth();
-    const [todoLists, setTodoLists] = useState([])
+    const [todoLists, setTodoLists] = useState([{'id':1,'text':'First item'},{'id':2,'text':'second item'}])
+    const last_id = todoLists[todoLists.length - 1].id
     let history = useHistory();
     const logoutfunction = () =>{
         logout()
@@ -31,7 +32,7 @@ const ToDoList = () => {
 
         const newTodoLists = [toDo, ...todoLists];
         setTodoLists(newTodoLists);
-        console.log(toDo, ...todoLists);
+        console.log(newTodoLists);
 
 
     }
@@ -47,6 +48,10 @@ const ToDoList = () => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
+        console.log(id)
+        console.log(newValue)
+        newValue['id']= id
+        console.log(newValue)
         setTodoLists(prev => prev.map(item => (item.id === id ? newValue : item)))
 
     }
@@ -71,7 +76,7 @@ const ToDoList = () => {
             </Grid>
             <h2>Let's organize your life.</h2>
             <img src={logo} alt="logo" height="100px" width="100px" style={{ margin: "0 auto" }} />
-            <Form onsubmit={addToDo} />
+            <Form onsubmit={addToDo} last_id = {last_id} />
             <ToDoContainer todoLists={todoLists} todoComplete={todoComplete} toDoRemove={toDoRemove} toDoUpdate={toDoUpdate} />
 
         </>

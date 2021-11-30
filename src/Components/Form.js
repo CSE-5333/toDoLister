@@ -1,8 +1,7 @@
 import { PinDropSharp } from '@mui/icons-material';
 
 import React, {useState, useEffect, useRef} from 'react';
-import { ToDoListHolder, InputContainer,Button, Input } from './FormElements';
-
+import { InputContainer,Button, Input } from './FormElements';
 
 
 const Form= (props)=>{
@@ -14,15 +13,16 @@ const Form= (props)=>{
         button = 'Update'
         value = true
     }
-
     
     useEffect(()=>{
         inputRef.current.focus()
     })
 
-  
+    const handleChange = e =>{
+        setInput(e.target.value)
+    }
+    const [key, setId] = useState(props.last_id+1);
 
-    const [key, setId] = useState(1 );
     const handleInput =(e) =>{
         e.preventDefault();
         setId(key+1)
@@ -31,13 +31,14 @@ const Form= (props)=>{
             text: textInput
 
         });
+       
 
         setInput('');
     };
     return(
         <>
         <InputContainer onSubmit={handleInput}>
-            <Input type ="text" arg = {value}  value={textInput} onChange = {e=>setInput(e.target.value) } ref={inputRef}></Input>
+            <Input type ="text" arg = {value}  value={textInput} onChange = {handleChange } ref={inputRef}></Input>
             <Button value = {value}>{button}</Button>
                  
         </InputContainer>

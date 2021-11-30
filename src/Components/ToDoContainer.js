@@ -11,6 +11,7 @@ const ToDoContainer = ({todoLists,todoComplete, toDoRemove, toDoUpdate}) =>{
 
     const submitHandle = value =>{
         toDoUpdate(edit.id, value)
+         
         setEdit({
             id:null,
             value: '',
