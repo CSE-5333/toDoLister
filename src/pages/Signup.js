@@ -26,7 +26,7 @@ function Signup() {
         setisLoading(true);
         register(Email, Password)
         .then((response)=>{
-            console.log(response)
+            //console.log(response)
             history.push('/home')
 
         })

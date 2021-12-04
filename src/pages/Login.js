@@ -19,11 +19,9 @@ function Login() {
     async function handleSubmit(e){
         //history.push('/home')
         setisLoading(true);
-        console.log(Email)
-        console.log(Password)
         login(Email, Password)
         .then((response)=>{
-            console.log(response)
+            //console.log(response)
             history.push('/home')
         })
         .catch((error)=>{
