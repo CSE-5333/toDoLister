@@ -1,11 +1,12 @@
-import { PinDropSharp } from '@mui/icons-material';
-
 import React, {useState, useEffect, useRef} from 'react';
-import { ToDoListHolder, InputContainer,Button, Input } from './FormElements';
+import {InputContainer,Button, Input } from './FormElements';
+// import axios from 'axios'
+// import { useAuth } from '../contexts/AuthContext';
 
 
 
 const Form= (props)=>{
+    //const {currentUser} = useAuth();
     const [textInput, setInput] = useState(props.edit? props.edit.value:'');
     const inputRef = useRef(null);
     let button = 'Add';
@@ -21,8 +22,8 @@ const Form= (props)=>{
     })
 
   
-
-    const [key, setId] = useState(1 );
+    console.log(props);
+    const [key, setId] = useState(props.last_id +1);
     const handleInput =(e) =>{
         e.preventDefault();
         setId(key+1)
@@ -31,6 +32,8 @@ const Form= (props)=>{
             text: textInput
 
         });
+        //console.log(key, textInput)
+        
 
         setInput('');
     };

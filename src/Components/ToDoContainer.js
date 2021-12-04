@@ -2,7 +2,11 @@ import {IoCloseCircleSharp} from 'react-icons/io5';
 import {BiEdit} from 'react-icons/bi';
 import { useState } from 'react';
 import Form from './Form';
+import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext';
+
 const ToDoContainer = ({todoLists,todoComplete, toDoRemove, toDoUpdate}) =>{
+    const {currentUser} = useAuth();
 
     const [edit, setEdit] = useState({
         id:null,
@@ -16,6 +20,24 @@ const ToDoContainer = ({todoLists,todoComplete, toDoRemove, toDoUpdate}) =>{
             value: '',
 
         })
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/item/additem',
+            data:{
+                [edit.id] : value.text
+            },
+            headers:{
+                authorization:"Bearer "+ currentUser.accessToken
+            },
+            
+            })
+            .then((response) => {
+
+                console.log(response)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
     }
     if(edit.id){
         return <Form edit={edit} onsubmit = {submitHandle}/>

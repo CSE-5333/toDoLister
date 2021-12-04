@@ -8,6 +8,7 @@ import { auth } from "../firebase";
 
 const AuthContext = createContext({
     currentUser: null,
+    accessToken: null,
     register: () => Promise,
     login: () => Promise,
     logout: () => Promise,
@@ -17,10 +18,11 @@ export const useAuth = () => useContext(AuthContext)
 
 export default function AuthContextProvider({children}){
     const [currentUser, setcurrentUser] = useState(null)
-
+    
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, user=>{
             setcurrentUser(user)
+            
         })
         return ()=>{
             unsubscribe()
