@@ -22,7 +22,7 @@ const ToDoContainer = ({todoLists,todoComplete, toDoRemove, toDoUpdate}) =>{
         })
         axios({
             method: 'post',
-            url: 'http://localhost:5000/item/additem',
+            url: 'api/item/additem',
             data:{
                 [edit.id] : value.text
             },

@@ -42,7 +42,7 @@ const ToDoList = () => {
         console.log(toDo, ...todoLists);
         axios({
             method: 'post',
-            url: 'http://localhost:5000/item/additem',
+            url: 'api/item/additem',
             data:{
                 [toDo.id] : toDo.text
             },
@@ -69,7 +69,7 @@ const ToDoList = () => {
         setTodoLists(newtoDoArray)
         axios({
             method: 'post',
-            url: 'http://localhost:5000/item/deleteitem',
+            url: 'api/item/deleteitem',
             data: {
                 listid: id
             },
@@ -117,7 +117,7 @@ const ToDoList = () => {
 
         axios({
             method: 'get',
-            url: 'http://localhost:5000/item/allitems',
+            url: 'api/item/allitems',
             headers: {
                 authorization: "Bearer " + currentUser.accessToken
             }
